@@ -6,14 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title: string = "Hello world!"
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  click() {
-    this.title = "Bye World!"
-  }
+  title = 'state-mgmt-with-ngxs';
 }
