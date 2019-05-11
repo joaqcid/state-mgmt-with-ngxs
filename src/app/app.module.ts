@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularComponent } from './pages/angular/angular.component';
 import { RxjsComponent } from './pages/rxjs/rxjs.component';
-import { NgxsComponent } from './pages/ngxs/ngxs.component';
 import { RxjsServiceComponent } from './pages/rxjs-service/rxjs-service.component';
+import { RxjsServiceIIComponent } from './pages/rxjs-service-ii/rxjs-service-ii.component';
+import { NgxsComponent } from './pages/ngxs/ngxs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AngularComponent,
     RxjsComponent,
+    RxjsServiceComponent,
+    RxjsServiceIIComponent,
     NgxsComponent,
-    RxjsServiceComponent
   ],
   imports: [
     BrowserModule,

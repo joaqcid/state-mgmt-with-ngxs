@@ -4,11 +4,13 @@ import { AngularComponent } from './pages/angular/angular.component';
 import { RxjsComponent } from './pages/rxjs/rxjs.component';
 import { NgxsComponent } from './pages/ngxs/ngxs.component';
 import { RxjsServiceComponent } from './pages/rxjs-service/rxjs-service.component';
+import { RxjsServiceIIComponent } from './pages/rxjs-service-ii/rxjs-service-ii.component';
 
 const routes: Routes = [
   { path: 'angular', component: AngularComponent },
   { path: 'rxjs', component: RxjsComponent },
   { path: 'rxjs-service', component: RxjsServiceComponent },
+  { path: 'rxjs-service-ii', component: RxjsServiceIIComponent },
   { path: 'ngxs', component: NgxsComponent }
 ];
 

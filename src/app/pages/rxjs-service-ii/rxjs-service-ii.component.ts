@@ -1,14 +1,14 @@
-import { ClickService } from './../../services/click.service';
 import { Component, OnInit } from '@angular/core';
-import { RxjsService } from 'src/app/services/rxjs.service';
 import { Observable } from 'rxjs';
+import { RxjsService } from 'src/app/services/rxjs.service';
+import { ClickService } from 'src/app/services/click.service';
 
 @Component({
-  selector: 'app-rxjs-service',
-  templateUrl: './rxjs-service.component.html',
-  styleUrls: ['./rxjs-service.component.scss']
+  selector: 'app-rxjs-service-ii',
+  templateUrl: './rxjs-service-ii.component.html',
+  styleUrls: ['./rxjs-service-ii.component.scss']
 })
-export class RxjsServiceComponent implements OnInit {
+export class RxjsServiceIIComponent implements OnInit {
 
   title$: Observable<string>;
 
@@ -28,6 +28,5 @@ export class RxjsServiceComponent implements OnInit {
 
     this.clickService.click()
   }
-
 
 }
