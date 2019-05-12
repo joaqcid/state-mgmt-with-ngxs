@@ -19,6 +19,7 @@ import { PageHeadState } from './states/page-head/page-head.state';
 import { ClickState } from './states/click/click.state';
 
 import { RouteHandler } from './action-handlers/route.handler';
+import { NgxsIIComponent } from './pages/ngxs-ii/ngxs-ii.component';
 
 // Noop handler for factory function
 export function noop() { return function () { }; };
@@ -31,6 +32,7 @@ export function noop() { return function () { }; };
     RxjsServiceComponent,
     RxjsServiceIIComponent,
     NgxsComponent,
+    NgxsIIComponent,
   ],
   imports: [
     BrowserModule,

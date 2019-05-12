@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'ngxs', component: NgxsComponent,
     data: { title: 'Ngxs', description: 'Angular description' }
+  },
+  {
+    path: 'ngxs-ii', component: NgxsComponent,
+    data: { title: 'Ngxs II', description: 'Angular description' }
   }
 ];
 

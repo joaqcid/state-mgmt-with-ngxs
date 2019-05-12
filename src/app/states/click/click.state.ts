@@ -9,7 +9,7 @@ export type ClickStateModel = {
 @State<ClickStateModel>({
   name: 'click',
   defaults: {
-    title: '',
+    title: 'Hello world!',
     clickCount: 0
   }
 })
