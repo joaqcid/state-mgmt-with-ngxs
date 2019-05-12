@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { SetPageHead } from './page-head.actions';
+import { SetPageHead } from '../page-head/page-head.actions';
 
 export type PageHeadStateModel = {
   title: string

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { PageHeadState } from './states/state/page-head.state';
+import { PageHeadState } from './states/page-head/page-head.state';
 
 @Component({
   selector: 'app-root',

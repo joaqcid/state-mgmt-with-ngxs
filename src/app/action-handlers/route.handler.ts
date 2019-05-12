@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Store, ofActionSuccessful } from '@ngxs/store';
 import { RouterNavigation } from '@ngxs/router-plugin';
-import { SetPageHead } from '../states/state/page-head.actions';
+import { SetPageHead } from '../states/page-head/page-head.actions';
 
 @Injectable({ providedIn: 'root' })
 export class RouteHandler {
