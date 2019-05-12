@@ -1,4 +1,3 @@
-import { ClickService } from './../../services/click.service';
 import { Component, OnInit } from '@angular/core';
 import { RxjsService } from 'src/app/services/rxjs.service';
 import { Observable } from 'rxjs';
@@ -15,35 +14,20 @@ export class RxjsServiceComponent implements OnInit {
   user$: Observable<User>;
 
   constructor(
-    private rxjsService: RxjsService,
-    private clickService: ClickService
+    private rxjsService: RxjsService
   ) { }
 
-  // ngOnInit() {
-  //   this.title$ = this.rxjsService.title$
-  //   this.user$ = this.rxjsService.user$
-  // }
-
-  // click() {
-  //   this.rxjsService.click()  
-  // }
-
-  // save(user: User) {
-  //   this.rxjsService.save()
-  // }
-
   ngOnInit() {
-    this.title$ = this.clickService.title$
-    this.user$ = this.clickService.user$
+    this.title$ = this.rxjsService.title$
+    this.user$ = this.rxjsService.user$
   }
 
   click() {
-    this.clickService.click()
+    this.rxjsService.click()
   }
 
   save(user: User) {
-    this.clickService.save(user)
+    this.rxjsService.save(user)
   }
-
 
 }

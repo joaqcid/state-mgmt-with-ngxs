@@ -25,6 +25,9 @@ import { ChildComponent } from './components/child/child.component';
 import { GrandChildComponent } from './components/grand-child/grand-child.component';
 import { UserFormInputOutputComponent } from './components/user-form-input-output/user-form-input-output.component';
 import { UserFormRxjsServiceComponent } from './components/user-form-rxjs-service/user-form-rxjs-service.component';
+import { GenericRxjsServiceComponent } from './pages/generic-rxjs-service/generic-rxjs-service.component';
+import { GenericRxjsServiceIIComponent } from './pages/generic-rxjs-service-ii/generic-rxjs-service-ii.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Noop handler for factory function
 export function noop() { return function () { }; };
@@ -42,6 +45,8 @@ export function noop() { return function () { }; };
     GrandChildComponent,
     UserFormInputOutputComponent,
     UserFormRxjsServiceComponent,
+    GenericRxjsServiceComponent,
+    GenericRxjsServiceIIComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ export function noop() { return function () { }; };
       disabled: environment.production,
       name: 'Ngxs State Management'
     }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     {

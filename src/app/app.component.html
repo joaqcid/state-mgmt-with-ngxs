@@ -1,19 +1,54 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
    <h5 class="my-0 mr-md-auto font-weight-normal">State management with Ngxs</h5>
-   <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark"
-         [routerLink]="['/angular']">Angular</a>
-      <a class="p-2 text-dark"
-         [routerLink]="['/rxjs']">Rxjs</a>
-      <a class="p-2 text-dark"
-         [routerLink]="['/rxjs-service']">Rxjs Service I</a>
-      <a class="p-2 text-dark"
-         [routerLink]="['/rxjs-service-ii']">Rxjs Service II</a>
-      <a class="p-2 text-dark"
-         [routerLink]="['/ngxs']">Ngxs I</a>
-      <a class="p-2 text-dark"
-         [routerLink]="['/ngxs-ii']">Ngxs II</a>
-   </nav>
+   <ul class="nav my-2 my-md-0 mr-md-3">
+      <li class="nav-item">
+         <a class="p-2 text-dark nav-link"
+            [routerLink]="['/angular']">Angular</a>
+      </li>
+      <li class="nav-item">
+         <a class="p-2 text-dark nav-link"
+            [routerLink]="['/rxjs']">Rxjs</a>
+      </li>
+      <li class="nav-item"
+          ngbDropdown>
+         <a class="nav-link"
+            ngbDropdownToggle>Rxjs Service</a>
+         <div ngbDropdownMenu>
+            <a class="p-2 text-dark"
+               ngbDropdownItem
+               [routerLink]="['/rxjs-service']">Rxjs Service I</a>
+            <a class="p-2 text-dark"
+               ngbDropdownItem
+               [routerLink]="['/rxjs-service-ii']">Rxjs Service II</a>
+         </div>
+      </li>
+      <li class="nav-item"
+          ngbDropdown>
+         <a class="nav-link"
+            ngbDropdownToggle>Generic Rxjs Service</a>
+         <div ngbDropdownMenu>
+            <a class="p-2 text-dark"
+               ngbDropdownItem
+               [routerLink]="['/generic-rxjs-service']">Generic Rxjs Service I</a>
+            <a class="p-2 text-dark"
+               ngbDropdownItem
+               [routerLink]="['/generic-rxjs-service-ii']">Generic Rxjs Service II</a>
+         </div>
+      </li>
+      <li class="nav-item"
+          ngbDropdown>
+         <a class="nav-link"
+            ngbDropdownToggle>Ngxs</a>
+         <div ngbDropdownMenu>
+            <a class="p-2 text-dark"
+               ngbDropdownItem
+               [routerLink]="['/ngxs']">Ngxs I</a>
+            <a class="p-2 text-dark"
+               ngbDropdownItem
+               [routerLink]="['/ngxs-ii']">Ngxs II</a>
+         </div>
+      </li>
+   </ul>
    <a class="btn btn-outline-primary"
       [routerLink]="['/login']">Login</a>
 </div>

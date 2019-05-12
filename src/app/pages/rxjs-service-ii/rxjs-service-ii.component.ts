@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RxjsService } from 'src/app/services/rxjs.service';
-import { ClickService } from 'src/app/services/click.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-rxjs-service-ii',
@@ -11,22 +11,23 @@ import { ClickService } from 'src/app/services/click.service';
 export class RxjsServiceIIComponent implements OnInit {
 
   title$: Observable<string>;
+  user$: Observable<User>;
 
   constructor(
-    private rxjsService: RxjsService,
-    private clickService: ClickService
+    private rxjsService: RxjsService
   ) { }
 
   ngOnInit() {
-    // this.title$ = this.rxjsService.title$
-
-    this.title$ = this.clickService.title$
+    this.title$ = this.rxjsService.title$
+    this.user$ = this.rxjsService.user$
   }
 
   click() {
-    // this.rxjsService.click()
+    this.rxjsService.click()
+  }
 
-    this.clickService.click()
+  save(user: User) {
+    this.rxjsService.save(user)
   }
 
 }
