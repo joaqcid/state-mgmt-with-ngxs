@@ -37,7 +37,10 @@ export function noop() { return function () { }; };
     ], { developmentMode: !environment.production }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production })
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production,
+      name: 'Ngxs State Management'
+    })
   ],
   providers: [
     {
