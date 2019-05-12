@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import { ClickState } from './states/click/click.state';
 
 import { RouteHandler } from './action-handlers/route.handler';
 import { NgxsIIComponent } from './pages/ngxs-ii/ngxs-ii.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 // Noop handler for factory function
 export function noop() { return function () { }; };
@@ -33,6 +35,7 @@ export function noop() { return function () { }; };
     RxjsServiceIIComponent,
     NgxsComponent,
     NgxsIIComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ export function noop() { return function () { }; };
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production,
       name: 'Ngxs State Management'
-    })
+    }),
+    ReactiveFormsModule
   ],
   providers: [
     {

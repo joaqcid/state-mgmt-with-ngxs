@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-12">
+    <div class="col-6">
 
       <p>
         {{title}}
@@ -9,6 +9,13 @@
 
       <button class="btn btn-primary"
               (click)="click()">Change title</button>
+
+    </div>
+
+    <div class="col-6">
+      <h4>{{user.lastName}}, {{user.firstName}}</h4>
+      <app-user-form [user]="user"
+                     (onSubmit)="save($event)"></app-user-form>
 
     </div>
   </div>
