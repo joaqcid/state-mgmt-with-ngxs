@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { PageHeadState } from './states/state/page-head.state';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'state-mgmt-with-ngxs';
+
+  @Select(PageHeadState.title) pageTitle$;
+  @Select(PageHeadState.description) pageDescription$;
+
 }

@@ -7,11 +7,26 @@ import { RxjsServiceComponent } from './pages/rxjs-service/rxjs-service.componen
 import { RxjsServiceIIComponent } from './pages/rxjs-service-ii/rxjs-service-ii.component';
 
 const routes: Routes = [
-  { path: 'angular', component: AngularComponent },
-  { path: 'rxjs', component: RxjsComponent },
-  { path: 'rxjs-service', component: RxjsServiceComponent },
-  { path: 'rxjs-service-ii', component: RxjsServiceIIComponent },
-  { path: 'ngxs', component: NgxsComponent }
+  {
+    path: 'angular', component: AngularComponent,
+    data: { title: 'Angular', description: 'Angular description' }
+  },
+  {
+    path: 'rxjs', component: RxjsComponent,
+    data: { title: 'Rxjs', description: 'Angular description' }
+  },
+  {
+    path: 'rxjs-service', component: RxjsServiceComponent,
+    data: { title: 'Rxjs Service I', description: 'Angular description' }
+  },
+  {
+    path: 'rxjs-service-ii', component: RxjsServiceIIComponent,
+    data: { title: 'Rxjs Service II', description: 'Angular description' }
+  },
+  {
+    path: 'ngxs', component: NgxsComponent,
+    data: { title: 'Ngxs', description: 'Angular description' }
+  }
 ];
 
 @NgModule({

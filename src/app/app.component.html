@@ -19,8 +19,8 @@
 </div>
 
 <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-   <h1 class="display-4">Angular</h1>
-   <p class="lead"></p>
+   <h1 class="display-4">{{ pageTitle$ | async }}</h1>
+   <p class="lead">{{ pageDescription$ | async }}</p>
 </div>
 
 <router-outlet></router-outlet>
