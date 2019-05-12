@@ -21,7 +21,10 @@ import { ClickState } from './states/click/click.state';
 
 import { RouteHandler } from './action-handlers/route.handler';
 import { NgxsIIComponent } from './pages/ngxs-ii/ngxs-ii.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { ChildComponent } from './components/child/child.component';
+import { GrandChildComponent } from './components/grand-child/grand-child.component';
+import { UserFormInputOutputComponent } from './components/user-form-input-output/user-form-input-output.component';
+import { UserFormRxjsServiceComponent } from './components/user-form-rxjs-service/user-form-rxjs-service.component';
 
 // Noop handler for factory function
 export function noop() { return function () { }; };
@@ -35,7 +38,10 @@ export function noop() { return function () { }; };
     RxjsServiceIIComponent,
     NgxsComponent,
     NgxsIIComponent,
-    UserFormComponent,
+    ChildComponent,
+    GrandChildComponent,
+    UserFormInputOutputComponent,
+    UserFormRxjsServiceComponent,
   ],
   imports: [
     BrowserModule,

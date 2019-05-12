@@ -1,16 +1,19 @@
-import { User } from './../../models/user';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  selector: 'app-user-form-input-output',
+  templateUrl: './user-form-input-output.component.html',
+  styleUrls: ['./user-form-input-output.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormInputOutputComponent implements OnInit {
 
   @Input() user: User
   @Output() onSubmit: EventEmitter<User> = new EventEmitter<User>();
+
+  user$: Observable<User>;
 
   form: FormGroup = new FormGroup({
     firstName: new FormControl('', Validators.required),

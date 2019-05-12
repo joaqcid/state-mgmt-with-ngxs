@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { GenericRxjsService } from './generic-rxjs.service';
 import { map } from 'rxjs/operators'
+import { User } from '../models/user';
 
 export type ClickModel = {
   title: string;
   clickCount: number;
+  user: User
 }
 
 @Injectable({
@@ -20,10 +22,20 @@ export class ClickService extends GenericRxjsService<ClickModel> {
     )
   }
 
+  get user$() {
+    return this.state$.pipe(
+      map(state => state.user)
+    )
+  }
+
   constructor() {
     super({
       title: "Hello world!",
-      clickCount: 0
+      clickCount: 0,
+      user: {
+        firstName: 'Joaquin',
+        lastName: 'Cid'
+      }
     })
   }
 
@@ -37,6 +49,17 @@ export class ClickService extends GenericRxjsService<ClickModel> {
       clickCount: newClickCount,
       title: `Clicked ${newClickCount} times`
     }, "click")
+
+  }
+
+  save({ firstName, lastName }: User) {
+
+    this.patch({
+      user: {
+        firstName,
+        lastName
+      }
+    }, "save")
 
   }
 }

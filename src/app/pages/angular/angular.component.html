@@ -2,21 +2,20 @@
   <div class="row">
 
     <div class="col-6">
-
       <p>
         {{title}}
       </p>
-
       <button class="btn btn-primary"
               (click)="click()">Change title</button>
-
     </div>
 
     <div class="col-6">
       <h4>{{user.lastName}}, {{user.firstName}}</h4>
-      <app-user-form [user]="user"
-                     (onSubmit)="save($event)"></app-user-form>
+      <app-user-form-input-output [user]="user"
+                                  (onSubmit)="save($event)">
+      </app-user-form-input-output>
 
     </div>
+
   </div>
 </div>
