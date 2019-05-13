@@ -23,7 +23,13 @@ export class UserState {
   }
 
   @Action(SaveUser)
-  saveUser(ctx: StateContext<UserStateModel>, action: SaveUser) {
-
+  saveUser({ patchState }: StateContext<UserStateModel>, action: SaveUser) {
+    const { firstName, lastName } = action.payload
+    patchState({
+      user: {
+        firstName,
+        lastName
+      }
+    })
   }
 }

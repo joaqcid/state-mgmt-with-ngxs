@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store, Actions, ofActionSuccessful } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -15,19 +15,32 @@ import { UserState } from 'src/app/states/user/user.state';
 })
 export class UserFormNgxsComponent implements OnInit {
 
-  @Select(UserState.user) user$: Observable<User>;
+  // @Select(UserState.user) user$: Observable<User>;
+  user$: Observable<User>;
+  saveUserSuccessful$: Observable<any>;
 
   form: FormGroup = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required)
   })
 
-  constructor() { }
+
+  constructor(
+    private store: Store,
+    private actions$: Actions
+  ) { }
 
   ngOnInit() {
     this.form.disable()
 
-    this.user$.pipe(
+    // this.user$ = this.user$.pipe(
+    //   tap(user => {
+    //     this.form.patchValue(user)
+
+    //     this.form.enable()
+    //   })
+    // )
+    this.user$ = this.store.select(UserState.user).pipe(
       tap(user => {
         this.form.patchValue(user)
 
@@ -35,14 +48,19 @@ export class UserFormNgxsComponent implements OnInit {
       })
     )
 
+    this.saveUserSuccessful$ = this.actions$.pipe(
+      ofActionSuccessful(SaveUser),
+      tap(() => {
+        this.form.reset({
+          firstName: '',
+          lastName: ''
+        })
+      })
+    )
+
   }
 
   @Dispatch()
   submit = () => new SaveUser(this.form.value)
-
-  // this.form.reset({
-  //   firstName: '',
-  //   lastName: ''
-  // })
 
 }

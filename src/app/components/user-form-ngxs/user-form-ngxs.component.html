@@ -1,4 +1,5 @@
 <ng-container *ngIf="user$ | async"></ng-container>
+<ng-container *ngIf="saveUserSuccessful$ | async"></ng-container>
 <div class="border p-3">
   <form [formGroup]="form"
         (ngSubmit)="submit()">
