@@ -25,8 +25,4 @@ export class GenericRxjsServiceIIComponent implements OnInit {
   click() {
     this.clickService.click()
   }
-
-  save(user: User) {
-    this.clickService.save(user)
-  }
 }

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { ClickState } from 'src/app/states/click/click.state';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Click } from 'src/app/states/click/click.actions';
+import { UserState } from 'src/app/states/user/user.state';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-ngxs',
@@ -13,6 +15,7 @@ import { Click } from 'src/app/states/click/click.actions';
 export class NgxsComponent implements OnInit {
 
   @Select(ClickState.title$) title$: Observable<string>;
+  @Select(UserState.user) user$: Observable<User>;
 
   constructor() { }
 

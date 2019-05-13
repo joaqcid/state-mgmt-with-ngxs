@@ -25,9 +25,4 @@ export class RxjsServiceComponent implements OnInit {
   click() {
     this.rxjsService.click()
   }
-
-  save(user: User) {
-    this.rxjsService.save(user)
-  }
-
 }

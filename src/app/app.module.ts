@@ -1,3 +1,4 @@
+import { UserState } from './states/user/user.state';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +29,8 @@ import { UserFormRxjsServiceComponent } from './components/user-form-rxjs-servic
 import { GenericRxjsServiceComponent } from './pages/generic-rxjs-service/generic-rxjs-service.component';
 import { GenericRxjsServiceIIComponent } from './pages/generic-rxjs-service-ii/generic-rxjs-service-ii.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserFormGenericRxjsServiceComponent } from './components/user-form-generic-rxjs-service/user-form-generic-rxjs-service.component';
+import { UserFormNgxsComponent } from './components/user-form-ngxs/user-form-ngxs.component';
 
 // Noop handler for factory function
 export function noop() { return function () { }; };
@@ -47,13 +50,16 @@ export function noop() { return function () { }; };
     UserFormRxjsServiceComponent,
     GenericRxjsServiceComponent,
     GenericRxjsServiceIIComponent,
+    UserFormGenericRxjsServiceComponent,
+    UserFormNgxsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxsModule.forRoot([
       PageHeadState,
-      ClickState
+      ClickState,
+      UserState
     ], { developmentMode: !environment.production }),
     NgxsDispatchPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),

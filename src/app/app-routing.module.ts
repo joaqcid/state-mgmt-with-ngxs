@@ -27,11 +27,11 @@ const routes: Routes = [
   },
   {
     path: 'generic-rxjs-service', component: GenericRxjsServiceComponent,
-    data: { title: 'Rxjs Service I', description: '' }
+    data: { title: 'Generic Rxjs Service I', description: '' }
   },
   {
     path: 'generic-rxjs-service-ii', component: GenericRxjsServiceIIComponent,
-    data: { title: 'Rxjs Service II', description: '' }
+    data: { title: 'Generic Rxjs Service II', description: '' }
   },
   {
     path: 'ngxs', component: NgxsComponent,

@@ -22,7 +22,6 @@ export class UserFormRxjsServiceComponent implements OnInit {
 
   constructor(
     private rxjsService: RxjsService,
-    private clickService: ClickService
   ) { }
 
   ngOnInit() {
