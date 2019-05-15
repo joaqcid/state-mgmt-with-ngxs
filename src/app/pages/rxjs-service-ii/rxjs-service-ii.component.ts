@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RxjsService } from 'src/app/services/rxjs.service';
-import { User } from 'src/app/models/user';
+import { RxjsService } from './../../../app/services/rxjs.service';
+import { User } from './../../../app/models/user';
 
 @Component({
   selector: 'app-rxjs-service-ii',

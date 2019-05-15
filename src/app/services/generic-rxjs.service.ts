@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from './../../environments/environment';
 
 export abstract class GenericRxjsService<T> {
 

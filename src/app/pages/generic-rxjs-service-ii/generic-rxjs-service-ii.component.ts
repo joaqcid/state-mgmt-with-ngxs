@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user';
-import { ClickService } from 'src/app/services/click.service';
+import { User } from './../../../app/models/user';
+import { ClickService } from './../../../app/services/click.service';
 
 @Component({
   selector: 'app-generic-rxjs-service-ii',

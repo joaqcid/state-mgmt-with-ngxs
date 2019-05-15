@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { ClickState } from 'src/app/states/click/click.state';
+import { ClickState } from './../../../app/states/click/click.state';
 import { Observable } from 'rxjs';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { Click } from 'src/app/states/click/click.actions';
+import { Click } from './../../../app/states/click/click.actions';
 
 @Component({
   selector: 'app-ngxs-ii',

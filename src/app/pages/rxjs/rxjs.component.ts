@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/models/user';
+import { User } from './../../../app/models/user';
 
 @Component({
   selector: 'app-rxjs',

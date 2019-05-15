@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ClickState } from 'src/app/states/click/click.state';
+import { ClickState } from './../../../app/states/click/click.state';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { Click } from 'src/app/states/click/click.actions';
-import { UserState } from 'src/app/states/user/user.state';
-import { User } from 'src/app/models/user';
+import { Click } from './../../../app/states/click/click.actions';
+import { UserState } from './../../../app/states/user/user.state';
+import { User } from './../../../app/models/user';
 
 @Component({
   selector: 'app-ngxs',

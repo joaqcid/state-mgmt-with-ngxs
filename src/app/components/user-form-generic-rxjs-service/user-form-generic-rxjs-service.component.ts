@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user';
+import { User } from './../../../app/models/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ClickService } from 'src/app/services/click.service';
+import { ClickService } from './../../../app/services/click.service';
 import { tap } from 'rxjs/operators';
 
 @Component({

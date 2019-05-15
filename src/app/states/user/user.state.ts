@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { SaveUser } from './user.actions';
-import { User } from 'src/app/models/user';
+import { User } from './../../../app/models/user';
 
 export class UserStateModel {
   public user: User;
