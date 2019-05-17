@@ -2,4 +2,12 @@
   <p>
     grand-child component
   </p>
+  <ng-container *ngIf="rxjsServicePage$ | async">
+    <h6>rxjsServiceUser$</h6>
+    <pre>{{rxjsServiceUser$ | async | json}}</pre>
+  </ng-container>
+  <ng-container *ngIf="genericServicePage$ | async">
+    <h6>clickServiceUser$</h6>
+    <pre>{{clickServiceUser$ | async | json}}</pre>
+  </ng-container>
 </div>

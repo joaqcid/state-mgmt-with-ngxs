@@ -1,4 +1,4 @@
-import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { State, Action, StateContext, Selector, createSelector } from '@ngxs/store';
 import { SetPageHead } from '../page-head/page-head.actions';
 
 export type PageHeadStateModel = {
@@ -25,6 +25,12 @@ export class PageHeadState {
     return state.description
   }
 
+  static isPage(pageTitle: string) {
+    return createSelector([PageHeadState], (state: PageHeadStateModel) => {
+      return state.title === pageTitle
+    })
+  }
+
   @Action(SetPageHead)
   setTitle(ctx: StateContext<PageHeadStateModel>, action: SetPageHead) {
 
@@ -32,6 +38,5 @@ export class PageHeadState {
       title: action.payload.title,
       description: action.payload.description
     });
-
   }
 }

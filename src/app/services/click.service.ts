@@ -40,16 +40,12 @@ export class ClickService extends GenericRxjsService<ClickModel> {
   }
 
   click() {
-
     const { clickCount, title } = this.state
-
     const newClickCount = clickCount + 1
-
     this.patch({
       clickCount: newClickCount,
       title: `Clicked ${newClickCount} times`
     }, "click")
-
   }
 
   save({ firstName, lastName }: User) {

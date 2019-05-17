@@ -19,7 +19,6 @@ export abstract class GenericRxjsService<T> {
       this.state = s
     })
   }
-
   protected patch(newValue: Partial<T>, event: string = "Not specified") {
     this.previous = this.state
     const newState = Object.assign({}, this.state, newValue);
@@ -45,5 +44,4 @@ export abstract class GenericRxjsService<T> {
     }
     this.bs.next(newState)
   }
-
 }
