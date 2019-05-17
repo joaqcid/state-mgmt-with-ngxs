@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { User } from './../../../app/models/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RxjsService } from './../../../app/services/rxjs.service';
-import { ClickService } from './../../../app/services/click.service';
 import { tap } from 'rxjs/operators';
 
 @Component({
