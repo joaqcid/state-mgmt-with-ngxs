@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { PageHeadState } from 'src/app/states/page-head/page-head.state';
+import { PAGE_HEADS } from 'src/app/app-routing.module';
+import { Observable } from 'rxjs';
+import { RxjsService } from 'src/app/services/rxjs.service';
+import { ClickService } from 'src/app/services/click.service';
+import { AngularService } from 'src/app/services/angular.service';
 
 @Component({
   selector: 'app-grand-child',
@@ -6,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grand-child.component.scss']
 })
 export class GrandChildComponent implements OnInit {
-    
+
   @Select(PageHeadState.isPage(PAGE_HEADS.RXJS_SERVICE_I.title)) rxjsServicePage$: Observable<boolean>
   @Select(PageHeadState.isPage(PAGE_HEADS.GENERIC_SERVICE_I.title)) genericServicePage$: Observable<boolean>
 
@@ -29,7 +36,7 @@ export class GrandChildComponent implements OnInit {
   }
 
   get user() {
-    console.log("GrandChildComponent", "user")
+    console.log("GrandChildComponent", "user", this.angularService.user)
     return this.angularService.user
   }
 
