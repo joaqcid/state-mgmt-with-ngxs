@@ -1,3 +1,4 @@
+import { AngularService } from './../../services/angular.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './../../../app/models/user';
 
@@ -16,7 +17,9 @@ export class AngularComponent implements OnInit {
     lastName: 'Cid'
   }
 
-  constructor() { }
+  constructor(
+    private angularService: AngularService
+  ) { }
 
   ngOnInit() { }
 
@@ -26,6 +29,7 @@ export class AngularComponent implements OnInit {
 
   save(user: User) {
     this.user = user
+    this.angularService.user = user
   }
 
 }
