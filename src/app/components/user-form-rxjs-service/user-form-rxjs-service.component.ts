@@ -46,25 +46,4 @@ export class UserFormRxjsServiceComponent implements OnInit {
     })
   }
 
-  // ngOnInit() {
-  //   this.form.disable()
-
-  //   this.user$ = this.clickService.user$.pipe(
-  //     tap(user => {
-  //       this.form.patchValue(user)
-
-  //       this.form.enable()
-  //     })
-  //   )
-
-  // }
-
-  // submit() {
-  //   this.clickService.save(this.form.value)
-  //   this.form.reset({
-  //     firstName: '',
-  //     lastName: ''
-  //   })
-  // }
-
 }
