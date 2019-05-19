@@ -46,11 +46,23 @@
             <a class="p-2 text-dark"
                ngbDropdownItem
                [routerLink]="['/ngxs-ii']">Ngxs II</a>
+            <a class="p-2 text-dark"
+               ngbDropdownItem
+               [routerLink]="['/ngxs-iii']">Ngxs III</a>
          </div>
       </li>
    </ul>
-   <a class="btn btn-outline-primary"
-      [routerLink]="['/login']">Login</a>
+
+   <a *ngIf="loggedOut$ | async"
+      class="btn btn-outline-primary"
+      (click)="login()">Login</a>
+   <span class="mr-2"
+         *ngIf="loggedIn$ | async">
+      {{email$ | async}}
+   </span>
+   <a *ngIf="loggedIn$ | async"
+      class="btn btn-outline-primary"
+      (click)="logout()">Logout</a>
 </div>
 
 <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">

@@ -18,7 +18,6 @@ import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { PageHeadState } from './states/page-head/page-head.state';
-import { ClickState } from './states/click/click.state';
 
 import { RouteHandler } from './action-handlers/route.handler';
 import { NgxsIIComponent } from './pages/ngxs-ii/ngxs-ii.component';
@@ -31,6 +30,18 @@ import { GenericRxjsServiceIIComponent } from './pages/generic-rxjs-service-ii/g
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserFormGenericRxjsServiceComponent } from './components/user-form-generic-rxjs-service/user-form-generic-rxjs-service.component';
 import { UserFormNgxsComponent } from './components/user-form-ngxs/user-form-ngxs.component';
+
+import { AngularFireModule } from '@angular/fire';
+
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NgxsIIIComponent } from './pages/ngxs-iii/ngxs-iii.component';
+import { AttendeeFormComponent } from './components/attendee-form/attendee-form.component';
+import { AttendeeListComponent } from './components/attendee-list/attendee-list.component';
+import { ClickState } from './states/click/click.state';
+import { AuthState } from './states/auth/auth.state';
+import { AttendeeFilterComponent } from './components/attendee-filter/attendee-filter.component';
+import { AttendeeDetailComponent } from './components/attendee-detail/attendee-detail.component';
 
 // Noop handler for factory function
 export function noop() { return function () { }; };
@@ -52,6 +63,11 @@ export function noop() { return function () { }; };
     GenericRxjsServiceIIComponent,
     UserFormGenericRxjsServiceComponent,
     UserFormNgxsComponent,
+    NgxsIIIComponent,
+    AttendeeFormComponent,
+    AttendeeListComponent,
+    AttendeeFilterComponent,
+    AttendeeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +75,8 @@ export function noop() { return function () { }; };
     NgxsModule.forRoot([
       PageHeadState,
       ClickState,
-      UserState
+      UserState,
+      AuthState,
     ], { developmentMode: !environment.production }),
     NgxsDispatchPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
@@ -69,7 +86,10 @@ export function noop() { return function () { }; };
       name: 'Ngxs State Management'
     }),
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [
     {

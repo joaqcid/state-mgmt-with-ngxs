@@ -1,3 +1,4 @@
+
 import { NgxsIIComponent } from './pages/ngxs-ii/ngxs-ii.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ import { RxjsServiceComponent } from './pages/rxjs-service/rxjs-service.componen
 import { RxjsServiceIIComponent } from './pages/rxjs-service-ii/rxjs-service-ii.component';
 import { GenericRxjsServiceComponent } from './pages/generic-rxjs-service/generic-rxjs-service.component';
 import { GenericRxjsServiceIIComponent } from './pages/generic-rxjs-service-ii/generic-rxjs-service-ii.component';
+import { NgxsIIIComponent } from './pages/ngxs-iii/ngxs-iii.component';
 
 export const PAGE_HEADS = {
   ANGULAR: { title: 'Angular', description: '' },
@@ -18,6 +20,7 @@ export const PAGE_HEADS = {
   GENERIC_SERVICE_II: { title: 'Generic Rxjs Service II', description: '' },
   NGXS: { title: 'Ngxs', description: '' },
   NGXS_II: { title: 'Ngxs II', description: '' },
+  NGXS_III: { title: 'Ngxs III', description: 'Firebase CRUD & Ngxs State Mgmt' },
 }
 
 const routes: Routes = [
@@ -52,7 +55,11 @@ const routes: Routes = [
   {
     path: 'ngxs-ii', component: NgxsIIComponent,
     data: PAGE_HEADS.NGXS_II
-  }
+  },
+  {
+    path: 'ngxs-iii', component: NgxsIIIComponent,
+    data: PAGE_HEADS.NGXS_III
+  },
 ];
 
 @NgModule({
