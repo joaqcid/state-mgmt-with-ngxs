@@ -91,6 +91,9 @@ export function noop() { return function () { }; };
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
+  entryComponents: [
+    AttendeeFormComponent
+  ],
   providers: [
     {
       provide: APP_INITIALIZER,

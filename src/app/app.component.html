@@ -48,6 +48,7 @@
                [routerLink]="['/ngxs-ii']">Ngxs II</a>
             <a class="p-2 text-dark"
                ngbDropdownItem
+               *ngIf="loggedIn$ | async"
                [routerLink]="['/ngxs-iii']">Ngxs III</a>
          </div>
       </li>

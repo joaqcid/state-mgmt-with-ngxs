@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ClickState } from 'src/app/states/click/click.state';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AttendeeFormComponent } from 'src/app/components/attendee-form/attendee-form.component';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 
 @Component({
   selector: 'app-ngxs-iii',
@@ -12,13 +13,18 @@ import { AttendeeFormComponent } from 'src/app/components/attendee-form/attendee
 })
 export class NgxsIIIComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
-
-  openAttendeeForm() {
-    const modalRef = this.modalService.open(AttendeeFormComponent);
-  }
+  constructor(
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit() {
   }
+
+  @Dispatch()
+  openModal() {
+    const modalRef = this.modalService.open(AttendeeFormComponent)
+  }
+
+
 
 }
