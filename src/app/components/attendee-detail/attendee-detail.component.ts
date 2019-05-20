@@ -1,4 +1,10 @@
+import { AttendeeState } from './../../states/attendee/attendee.state';
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AttendeeFormComponent } from '../attendee-form/attendee-form.component';
+import { DeleteAttendee, SetFormTitle } from 'src/app/states/attendee/attendee.actions';
 
 @Component({
   selector: 'app-attendee-detail',
@@ -7,9 +13,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttendeeDetailComponent implements OnInit {
 
-  constructor() { }
+  @Select(AttendeeState.selected) attendee$
+
+  constructor(
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit() {
   }
+
+
+  @Dispatch()
+  edit = () => {
+    const modalRef = this.modalService.open(AttendeeFormComponent)
+
+    return new SetFormTitle("Edit Attendee")
+  }
+
+  @Dispatch()
+  delete = (id) => new DeleteAttendee(id)
 
 }

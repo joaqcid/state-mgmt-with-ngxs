@@ -1,14 +1,15 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-6">
+    <div class="col-9">
 
-      <button (click)="openModal()"> Add </button>
+      <button class="btn btn-primary"
+              (click)="openModal()"> Add </button>
       <app-attendee-filter></app-attendee-filter>
       <app-attendee-list></app-attendee-list>
 
     </div>
-    <div class="col-6">
+    <div class="col-3">
 
       <app-attendee-detail></app-attendee-detail>
     </div>

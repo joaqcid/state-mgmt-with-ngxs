@@ -1,5 +1,6 @@
+<ng-container *ngIf="edit$ | async"> </ng-container>
 <div class="modal-header">
-  <h4 class="modal-title">{{action$ | async}}</h4>
+  <h4 class="modal-title">{{formTitle$ | async}}</h4>
   <button type="button"
           class="close"
           aria-label="Close"
@@ -8,9 +9,41 @@
   </button>
 </div>
 <div class="modal-body">
-  <p>Hello ldkl!</p>
+  <form [formGroup]="form"
+        (ngSubmit)="save()">
+    <div class="form-group">
+      <label>Name:</label>
+      <input class="form-control"
+             [class.is-invalid]="form.controls['name'].invalid && form.controls['name'].touched"
+             type="string"
+             formControlName="name">
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['name'].invalid && form.controls['name'].touched && form.controls['name'].hasError('required')">
+        (*) Name required
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email:</label>
+      <input class="form-control"
+             [class.is-invalid]="form.controls['email'].invalid && form.controls['email'].touched"
+             type="string"
+             formControlName="email">
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['email'].invalid && form.controls['email'].touched && form.controls['email'].hasError('required')">
+        (*) Email required
+      </div>
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['email'].invalid && form.controls['email'].touched && form.controls['email'].hasError('email')">
+        (*) Email format incorrect
+      </div>
+    </div>
+  </form>
 </div>
 <div class="modal-footer">
-  <button type="button"
-          class="btn btn-outline-dark">Close</button>
+  <button class="btn btn-danger mx-2"
+          (click)="dismiss()"
+          [disabled]="disabled"> Cancel </button>
+  <button class="btn btn-primary mx-2"
+          [disabled]="disabled"
+          (click)="save()"> Save </button>
 </div>

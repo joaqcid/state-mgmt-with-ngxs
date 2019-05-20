@@ -1,26 +1,32 @@
-import 'firebase/app'
+import { Attendee } from 'src/app/models/attendee';
 
-export class Login {
-  static readonly type = '[Auth] Login';
-  constructor() { }
+export class SetFormTitle {
+  static readonly type = '[Attendee] SetFormTitle';
+  constructor(public payload: string) { }
 }
 
 export class AddAttendee {
-  static readonly type = '[AddAttendee] AddAttendee';
+  static readonly type = '[Attendee] AddAttendee';
+  constructor(public payload: Attendee) { }
+}
+
+export class SelectAttendee {
+  static readonly type = '[Attendee] SelectAttendee';
+  constructor(public payload: Attendee) { }
+}
+
+export class ClearSelectedAttendee {
+  static readonly type = '[Attendee] ClearSelectedAttendee';
   constructor() { }
 }
 
-export class CloseModal {
-  static readonly type = '[AddAttendee] CloseModal';
-  constructor() { }
+export class EditAttendee {
+  static readonly type = '[Attendee] EditAttendee';
+  constructor(public payload: Attendee) { }
 }
 
-export class OpenModal {
-  static readonly type = '[Atendee] OpenModal';
-  constructor() { }
+export class DeleteAttendee {
+  static readonly type = '[Attendee] DeleteAttendee';
+  constructor(public payload: string) { }
 }
 
-export class DismissModal {
-  static readonly type = '[Atendee] DismissModal';
-  constructor() { }
-}

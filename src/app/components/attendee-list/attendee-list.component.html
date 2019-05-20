@@ -1,3 +1,13 @@
-<p>
-  attendee-list works!
-</p>
+<div class="d-flex">
+  <div class="card mr-2"
+       *ngFor="let attendee of attendees$ | async">
+    <div class="card-body">
+      <h5 class="card-title">{{attendee.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{attendee.email}}</h6>
+      <p class="card-text">{{attendee.message}}</p>
+
+      <button class="btn btn-primary"
+              (click)="detail(attendee)">Open</button>
+    </div>
+  </div>
+</div>

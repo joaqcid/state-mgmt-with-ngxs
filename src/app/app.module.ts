@@ -1,3 +1,4 @@
+import { AttendeeState } from './states/attendee/attendee.state';
 import { UserState } from './states/user/user.state';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
@@ -77,6 +78,7 @@ export function noop() { return function () { }; };
       ClickState,
       UserState,
       AuthState,
+      AttendeeState
     ], { developmentMode: !environment.production }),
     NgxsDispatchPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
