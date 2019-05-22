@@ -1,10 +1,11 @@
 import { Attendee } from './../../models/attendee';
 import { AttendeeFirestore } from './../../services/attendee.firestore';
 import { State, Action, StateContext, Selector, NgxsOnInit, Actions, ofActionSuccessful } from '@ngxs/store';
-import { SetFormTitle, AddAttendee, SelectAttendee, EditAttendee, DeleteAttendee, ClearSelectedAttendee, FilterAttendees, SetLoading, SetLoaded, UpsertAttendee } from './attendee.actions';
-import { tap, debounceTime, switchMap } from 'rxjs/operators';
+import { SetFormTitle, SelectAttendee, DeleteAttendee, ClearSelectedAttendee, FilterAttendees, SetLoading, SetLoaded, UpsertAttendee } from './attendee.actions';
+import { tap, debounceTime, switchMap, map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import * as _ from 'lodash'
+import { GrowlNotificationActions } from '../growl-notification/growl-notification.actions';
 
 export interface AttendeeStateModel {
   formTitle: string;
@@ -40,7 +41,7 @@ export class AttendeeState implements NgxsOnInit {
     this.actions$.pipe(
       ofActionSuccessful(FilterAttendees),
       debounceTime(500),
-      tap(filter => {
+      tap(() => {
         dispatch(new SetLoading())
       }),
       switchMap(filter => {
@@ -56,17 +57,19 @@ export class AttendeeState implements NgxsOnInit {
         )
 
       }),
-      tap(([attendeesByName, attendeesByEmail]) => {
-        const deduped = _.uniqBy([...attendeesByName, ...attendeesByEmail], 'id')
+      map(([attendeesByName, attendeesByEmail]) => {
+        const deduped = _.uniqBy([...attendeesByName, ...attendeesByEmail], 'id');
+        return deduped
+      }),
+      tap(attendees => {
         patchState({
-          attendees: deduped,
+          attendees,
           loaded: true,
           loading: false
         })
-        dispatch(new SetLoaded(deduped))
+        dispatch(new SetLoaded(attendees))
       })
     ).subscribe()
-
   }
 
   @Selector()
@@ -95,7 +98,7 @@ export class AttendeeState implements NgxsOnInit {
   }
 
   @Action(SetLoading)
-  setLoading({ patchState }: StateContext<AttendeeStateModel>, action: SetLoading) {
+  setLoading({ patchState }: StateContext<AttendeeStateModel>) {
     patchState({
       attendees: [],
       loaded: false,
@@ -113,7 +116,7 @@ export class AttendeeState implements NgxsOnInit {
   }
 
   @Action(UpsertAttendee)
-  async upsertAttendee({ patchState }: StateContext<AttendeeStateModel>, action: UpsertAttendee) {
+  async upsertAttendee(action: UpsertAttendee) {
     await this.attendeeFS.upsert(action.payload)
   }
 
@@ -128,13 +131,14 @@ export class AttendeeState implements NgxsOnInit {
   }
 
   @Action(ClearSelectedAttendee)
-  clearSelectedAttendee({ patchState }: StateContext<AttendeeStateModel>, action: ClearSelectedAttendee) {
+  clearSelectedAttendee({ patchState }: StateContext<AttendeeStateModel>) {
     patchState({ selected: null })
   }
 
   @Action(DeleteAttendee)
-  async deleteAttendee({ patchState }: StateContext<AttendeeStateModel>, action: DeleteAttendee) {
+  async deleteAttendee({ dispatch }: StateContext<AttendeeStateModel>, action: DeleteAttendee) {
     await this.attendeeFS.delete(action.payload)
+    dispatch(new GrowlNotificationActions.Success(`Attendee deleted!`))
   }
 
 }

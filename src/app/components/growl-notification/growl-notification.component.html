@@ -1,6 +1,7 @@
 <div *ngIf="show$ | async"
      class="alert"
      [class.alert-danger]="isError$ | async"
+     [class.alert-success]="isSuccess$ | async"
      role="alert">
   {{message$ | async}}
 

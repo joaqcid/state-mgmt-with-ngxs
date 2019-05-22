@@ -8,4 +8,9 @@ export namespace GrowlNotificationActions {
     static readonly type = '[GrowlNotification] Dismiss';
     constructor() { }
   }
+
+  export class Success {
+    static readonly type = '[GrowlNotification] Success';
+    constructor(public payload: string) { }
+  }
 }

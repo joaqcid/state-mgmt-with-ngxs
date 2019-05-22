@@ -1,21 +1,20 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-9">
-
-
-      <app-attendee-filter class="w-25 d-block"></app-attendee-filter>
-
-      <button class="btn btn-primary my-3"
-              (click)="openModal()"> Add </button>
-
-
-
-      <app-attendee-list class="d-block"></app-attendee-list>
-
+    <div class="col-12 mb-3 d-md-none">
+      <app-attendee-detail></app-attendee-detail>
     </div>
-    <div class="col-3">
-
+    <div class="col-12 col-md-3">
+      <app-attendee-filter class="d-block"></app-attendee-filter>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary my-3"
+              (click)="openModal()"> Add message </button>
+    </div>
+    <div class="col-12 col-md-9">
+      <app-attendee-list></app-attendee-list>
+    </div>
+    <div class="col-12 col-md-3 d-none d-md-block">
       <app-attendee-detail></app-attendee-detail>
     </div>
   </div>

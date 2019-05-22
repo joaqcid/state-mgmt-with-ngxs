@@ -3,7 +3,7 @@ import { GrowlNotificationActions } from './growl-notification.actions';
 
 export type GrowlNotificationStateModel = {
   message: string
-  type: 'error' | '';
+  type: 'error' | 'success' | '';
 }
 
 @State<GrowlNotificationStateModel>({
@@ -30,11 +30,24 @@ export class GrowlNotificationState {
     return state.type === 'error'
   }
 
+  @Selector()
+  static isSuccess(state: GrowlNotificationStateModel) {
+    return state.type === 'success'
+  }
+
   @Action(GrowlNotificationActions.Error)
   error(ctx: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Error) {
     ctx.patchState({
       message: action.payload,
       type: 'error'
+    });
+  }
+
+  @Action(GrowlNotificationActions.Success)
+  success(ctx: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Success) {
+    ctx.patchState({
+      message: action.payload,
+      type: 'success'
     });
   }
 

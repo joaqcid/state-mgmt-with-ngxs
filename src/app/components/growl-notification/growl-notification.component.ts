@@ -14,6 +14,7 @@ export class GrowlNotificationComponent implements OnInit {
   @Select(GrowlNotificationState.message) message$
   @Select(GrowlNotificationState.show) show$
   @Select(GrowlNotificationState.isError) isError$
+  @Select(GrowlNotificationState.isSuccess) isSuccess$
 
   constructor() { }
 
