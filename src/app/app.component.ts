@@ -14,13 +14,4 @@ export class AppComponent {
 
   @Select(PageHeadState.title) pageTitle$;
   @Select(PageHeadState.description) pageDescription$;
-  @Select(AuthState.loggedIn) loggedIn$;
-  @Select(AuthState.loggedOut) loggedOut$;
-  @Select(AuthState.email) email$;
-
-  @Dispatch()
-  login = () => new Login()
-
-  @Dispatch()
-  logout = () => new Logout()
 }

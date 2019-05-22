@@ -1,0 +1,13 @@
+<div *ngIf="show$ | async"
+     class="alert"
+     [class.alert-danger]="isError$ | async"
+     role="alert">
+  {{message$ | async}}
+
+  <button type="button"
+          class="close"
+          aria-label="Close"
+          (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

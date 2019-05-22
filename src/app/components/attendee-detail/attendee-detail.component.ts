@@ -1,3 +1,4 @@
+import { AuthState } from './../../states/auth/auth.state';
 import { AttendeeState } from './../../states/attendee/attendee.state';
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
@@ -14,6 +15,7 @@ import { DeleteAttendee, SetFormTitle } from 'src/app/states/attendee/attendee.a
 export class AttendeeDetailComponent implements OnInit {
 
   @Select(AttendeeState.selected) attendee$
+  @Select(AuthState.loggedOut) loggedOut$
 
   constructor(
     private modalService: NgbModal,
@@ -21,7 +23,6 @@ export class AttendeeDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
 
   @Dispatch()
   edit = () => {

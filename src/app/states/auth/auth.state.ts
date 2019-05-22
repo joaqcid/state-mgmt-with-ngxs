@@ -49,10 +49,10 @@ export class AuthState implements NgxsOnInit {
 
   @Action(AuthStateChanged)
   async authStateChanged({ patchState }: StateContext<AuthStateModel>, action: AuthStateChanged) {
-    patchState({
-      loggedIn: !action.payload.isAnonymous,
-      email: action.payload.email || ''
-    })
+    if (!action.payload)
+      patchState({ loggedIn: false, email: '' })
+    else
+      patchState({ loggedIn: !!action.payload, email: action.payload.email || '' })
   }
 
   @Action(Login)

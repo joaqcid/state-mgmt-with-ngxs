@@ -5,9 +5,12 @@
     <h6 class="card-subtitle mb-2 text-muted">{{attendee.email}}</h6>
     <p class="card-text">{{attendee.message}}</p>
 
-    <button class="btn btn-danger"
-            (click)="delete()">Delete</button>
-    <button class="btn btn-primary"
+
+    <button class="btn btn-primary mx-1"
+            [disabled]="loggedOut$ | async"
             (click)="edit()">Edit</button>
+
+    <button class="btn btn-danger mx-1"
+            (click)="delete()">Delete</button>
   </div>
 </div>
