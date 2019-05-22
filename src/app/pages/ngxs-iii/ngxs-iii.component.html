@@ -3,10 +3,15 @@
 
     <div class="col-9">
 
-      <button class="btn btn-primary"
+
+      <app-attendee-filter class="w-25 d-block"></app-attendee-filter>
+
+      <button class="btn btn-primary my-3"
               (click)="openModal()"> Add </button>
-      <app-attendee-filter></app-attendee-filter>
-      <app-attendee-list></app-attendee-list>
+
+
+
+      <app-attendee-list class="d-block"></app-attendee-list>
 
     </div>
     <div class="col-3">

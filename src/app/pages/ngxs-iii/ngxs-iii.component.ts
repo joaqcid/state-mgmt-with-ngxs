@@ -1,4 +1,4 @@
-import { SetFormTitle, ClearSelectedAttendee } from './../../states/attendee/attendee.actions';
+import { SetFormTitle, ClearSelectedAttendee, FilterAttendees } from './../../states/attendee/attendee.actions';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AttendeeFormComponent } from 'src/app/components/attendee-form/attendee-form.component';
@@ -18,11 +18,12 @@ export class NgxsIIIComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.store.dispatch(new FilterAttendees(''))
   }
 
   @Dispatch()
   openModal = () => {
-    const modalRef = this.modalService.open(AttendeeFormComponent)
+    const modalRef = this.modalService.open(AttendeeFormComponent, { backdrop: 'static' })
     return [new SetFormTitle("Add Attendee"), new ClearSelectedAttendee()]
   }
 

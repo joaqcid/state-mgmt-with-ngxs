@@ -13,6 +13,7 @@ import { SelectAttendee } from 'src/app/states/attendee/attendee.actions';
 export class AttendeeListComponent implements OnInit {
 
   @Select(AttendeeState.attendees) attendees$
+  @Select(AttendeeState.loading) loading$
 
   constructor() { }
 

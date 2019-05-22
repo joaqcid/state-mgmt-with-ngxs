@@ -1,5 +1,5 @@
-<div class="d-flex">
-  <div class="card mr-2"
+<div class="d-flex flex-wrap">
+  <div class="card mr-2 mb-2"
        *ngFor="let attendee of attendees$ | async">
     <div class="card-body">
       <h5 class="card-title">{{attendee.name}}</h5>
@@ -10,4 +10,12 @@
               (click)="detail(attendee)">Open</button>
     </div>
   </div>
+</div>
+
+<div class="d-flex align-items-center"
+     *ngIf="loading$ | async">
+  <div class="spinner-border"
+       role="status">
+  </div>
+  <span class="ml-2">Loading... </span>
 </div>

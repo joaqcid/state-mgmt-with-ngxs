@@ -1,14 +1,18 @@
 import { Attendee } from './../../models/attendee';
 import { AttendeeFirestore } from './../../services/attendee.firestore';
-import { State, Action, StateContext, Selector, NgxsOnInit } from '@ngxs/store';
-import { SetFormTitle, AddAttendee, SelectAttendee, EditAttendee, DeleteAttendee, ClearSelectedAttendee } from './attendee.actions';
-import { tap } from 'rxjs/operators';
+import { State, Action, StateContext, Selector, NgxsOnInit, Actions, ofActionSuccessful } from '@ngxs/store';
+import { SetFormTitle, AddAttendee, SelectAttendee, EditAttendee, DeleteAttendee, ClearSelectedAttendee, FilterAttendees, SetLoading, SetLoaded } from './attendee.actions';
+import { tap, debounceTime, switchMap } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
+import * as _ from 'lodash'
 
 export interface AttendeeStateModel {
   formTitle: string;
   attendees: Attendee[];
-  selected: Attendee
-
+  selected: Attendee;
+  filterBy: string;
+  loading: boolean
+  loaded: boolean
 }
 
 @State<AttendeeStateModel>({
@@ -16,25 +20,53 @@ export interface AttendeeStateModel {
   defaults: {
     formTitle: '',
     attendees: [],
-    selected: null
+    selected: null,
+    filterBy: '',
+    loading: true,
+    loaded: false
   }
 })
 export class AttendeeState implements NgxsOnInit {
 
   constructor(
-    private attendeeFS: AttendeeFirestore
+    private attendeeFS: AttendeeFirestore,
+    private actions$: Actions
   ) {
 
   }
 
-  ngxsOnInit({ patchState }: StateContext<AttendeeStateModel>) {
-    this.attendeeFS.collection$(ref => ref.orderBy('name')).pipe(
-      tap(attendees => {
+  ngxsOnInit({ patchState, dispatch }: StateContext<AttendeeStateModel>) {
+
+    this.actions$.pipe(
+      ofActionSuccessful(FilterAttendees),
+      debounceTime(500),
+      tap(filter => {
+        dispatch(new SetLoading())
+      }),
+      switchMap(filter => {
+        const { payload } = filter
+
+        return combineLatest(
+          this.attendeeFS.collection$(
+            ref => ref.orderBy('name').startAt(payload).endAt(`${payload}\uf8ff`)
+          ),
+          this.attendeeFS.collection$(
+            ref => ref.orderBy('email').startAt(payload).endAt(`${payload}\uf8ff`)
+          )
+        )
+
+      }),
+      tap(([attendeesByName, attendeesByEmail]) => {
+        const deduped = _.uniqBy([...attendeesByName, ...attendeesByEmail], 'id')
         patchState({
-          attendees: attendees
+          attendees: deduped,
+          loaded: true,
+          loading: false
         })
+        dispatch(new SetLoaded(deduped))
       })
     ).subscribe()
+
   }
 
   @Selector()
@@ -52,19 +84,47 @@ export class AttendeeState implements NgxsOnInit {
     return state.selected
   };
 
+  @Selector()
+  static loading(state: AttendeeStateModel) {
+    return state.loading
+  };
+
   @Action(SetFormTitle)
   setFormTitle({ patchState }: StateContext<AttendeeStateModel>, action: SetFormTitle) {
     patchState({ formTitle: action.payload })
   }
 
+  @Action(SetLoading)
+  setLoading({ patchState }: StateContext<AttendeeStateModel>, action: SetLoading) {
+    patchState({
+      attendees: [],
+      loaded: false,
+      loading: true
+    })
+  }
+
+  @Action(SetLoaded)
+  setLoaded({ patchState }: StateContext<AttendeeStateModel>, action: SetLoaded<Attendee[]>) {
+    patchState({
+      attendees: action.payload,
+      loaded: true,
+      loading: false
+    })
+  }
+
   @Action(AddAttendee)
-  async addAddAttendee({ patchState }: StateContext<AttendeeStateModel>, action: AddAttendee) {
+  async addAttendee({ patchState }: StateContext<AttendeeStateModel>, action: AddAttendee) {
     await this.attendeeFS.upsert(action.payload)
   }
 
   @Action(SelectAttendee)
   selectAttendee({ patchState }: StateContext<AttendeeStateModel>, action: SelectAttendee) {
     patchState({ selected: action.payload })
+  }
+
+  @Action(FilterAttendees)
+  filterAttendees({ patchState }: StateContext<AttendeeStateModel>, action: FilterAttendees) {
+    patchState({ filterBy: action.payload })
   }
 
   @Action(ClearSelectedAttendee)

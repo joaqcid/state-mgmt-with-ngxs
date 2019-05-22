@@ -50,5 +50,8 @@ export class AttendeeFormComponent implements OnInit {
   }
 
   @Dispatch()
-  save = () => new AddAttendee(this.form.value)
+  save = () => { 
+    this.activeModal.dismiss()
+    return new AddAttendee(this.form.value) 
+  }
 }

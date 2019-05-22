@@ -5,9 +5,24 @@ export class SetFormTitle {
   constructor(public payload: string) { }
 }
 
+export class SetLoading {
+  static readonly type = '[Attendee] SetLoading';
+  constructor() { }
+}
+
+export class SetLoaded<T>{
+  static readonly type = '[Attendee] SetLoaded';
+  constructor(public payload: T) { }
+}
+
 export class AddAttendee {
   static readonly type = '[Attendee] AddAttendee';
   constructor(public payload: Attendee) { }
+}
+
+export class FilterAttendees {
+  static readonly type = '[Attendee] FilterAttendees';
+  constructor(public payload: string) { }
 }
 
 export class SelectAttendee {

@@ -1,3 +1,9 @@
-<p>
-  attendee-filter works!
-</p>
+<ng-container *ngIf="queryValueChanges$ | async"></ng-container>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label>Search:</label>
+    <input class="form-control"
+           type="string"
+           formControlName="query">
+  </div>
+</form>
