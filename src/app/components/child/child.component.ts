@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User } from './../../../app/models/user';
 
 @Component({
   selector: 'app-child',
@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user';
 export class ChildComponent implements OnInit {
 
   // @Input() user: User;
-  
+
   constructor() { }
 
   ngOnInit() {

@@ -5,7 +5,7 @@ import { Select } from '@ngxs/store';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AttendeeFormComponent } from '../attendee-form/attendee-form.component';
-import { DeleteAttendee, SetFormTitle } from 'src/app/states/attendee/attendee.actions';
+import { DeleteAttendee, SetFormTitle } from './../../../app/states/attendee/attendee.actions';
 
 @Component({
   selector: 'app-attendee-detail',

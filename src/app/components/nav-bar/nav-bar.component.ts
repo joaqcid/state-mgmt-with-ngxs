@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { AuthState } from 'src/app/states/auth/auth.state';
+import { AuthState } from './../../../app/states/auth/auth.state';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { Login, Logout } from 'src/app/states/auth/auth.actions';
+import { Login, Logout } from './../../../app/states/auth/auth.actions';
 
 @Component({
   selector: 'app-nav-bar',

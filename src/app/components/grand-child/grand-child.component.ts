@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { PageHeadState } from 'src/app/states/page-head/page-head.state';
-import { PAGE_HEADS } from 'src/app/app-routing.module';
+import { PageHeadState } from './../../../app/states/page-head/page-head.state';
+import { PAGE_HEADS } from './../../../app/app-routing.module';
 import { Observable } from 'rxjs';
-import { RxjsService } from 'src/app/services/rxjs.service';
-import { ClickService } from 'src/app/services/click.service';
-import { AngularService } from 'src/app/services/angular.service';
+import { RxjsService } from './../../../app/services/rxjs.service';
+import { ClickService } from './../../../app/services/click.service';
+import { AngularService } from './../../../app/services/angular.service';
 
 @Component({
   selector: 'app-grand-child',

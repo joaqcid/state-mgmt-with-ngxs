@@ -2,7 +2,7 @@ import { GrowlNotificationState } from './../../states/growl-notification/growl-
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { GrowlNotificationActions } from 'src/app/states/growl-notification/growl-notification.actions';
+import { GrowlNotificationActions } from './../../../app/states/growl-notification/growl-notification.actions';
 
 @Component({
   selector: 'app-growl-notification',

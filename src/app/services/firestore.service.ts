@@ -1,6 +1,6 @@
 import { AngularFirestore, QueryFn } from '@angular/fire/firestore';
 import { Inject } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from './../../environments/environment';
 import { Observable, of, throwError } from 'rxjs';
 import { debounceTime, tap, catchError } from 'rxjs/operators';
 import * as firebase from 'firebase';

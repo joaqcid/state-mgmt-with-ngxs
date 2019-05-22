@@ -1,10 +1,10 @@
-import { Attendee } from 'src/app/models/attendee';
+import { Attendee } from './../../../app/models/attendee';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AttendeeState } from './../../states/attendee/attendee.state';
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { AddAttendee } from 'src/app/states/attendee/attendee.actions';
+import { AddAttendee } from './../../../app/states/attendee/attendee.actions';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -50,8 +50,8 @@ export class AttendeeFormComponent implements OnInit {
   }
 
   @Dispatch()
-  save = () => { 
+  save = () => {
     this.activeModal.dismiss()
-    return new AddAttendee(this.form.value) 
+    return new AddAttendee(this.form.value)
   }
 }

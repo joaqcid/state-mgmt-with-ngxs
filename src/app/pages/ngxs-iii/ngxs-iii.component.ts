@@ -1,7 +1,7 @@
 import { SetFormTitle, ClearSelectedAttendee, FilterAttendees } from './../../states/attendee/attendee.actions';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AttendeeFormComponent } from 'src/app/components/attendee-form/attendee-form.component';
+import { AttendeeFormComponent } from './../../../app/components/attendee-form/attendee-form.component';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Store } from '@ngxs/store';
 

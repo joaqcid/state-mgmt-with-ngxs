@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { tap, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
-import { FilterAttendees } from 'src/app/states/attendee/attendee.actions';
+import { FilterAttendees } from './../../../app/states/attendee/attendee.actions';
 
 @Component({
   selector: 'app-attendee-filter',

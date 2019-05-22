@@ -1,9 +1,9 @@
 import { AttendeeState } from './../../states/attendee/attendee.state';
-import { Attendee } from 'src/app/models/attendee';
+import { Attendee } from './../../../app/models/attendee';
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { SelectAttendee } from 'src/app/states/attendee/attendee.actions';
+import { SelectAttendee } from './../../../app/states/attendee/attendee.actions';
 
 @Component({
   selector: 'app-attendee-list',

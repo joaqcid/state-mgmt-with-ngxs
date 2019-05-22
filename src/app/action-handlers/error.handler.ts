@@ -1,4 +1,4 @@
-import { GrowlNotificationActions } from 'src/app/states/growl-notification/growl-notification.actions';
+import { GrowlNotificationActions } from './../../app/states/growl-notification/growl-notification.actions';
 import { Injectable, ErrorHandler, Provider, Injector } from '@angular/core';
 import { Store } from '@ngxs/store';
 

@@ -1,4 +1,4 @@
-import { Attendee } from 'src/app/models/attendee';
+import { Attendee } from './../../../app/models/attendee';
 
 export class SetFormTitle {
   static readonly type = '[Attendee] SetFormTitle';
