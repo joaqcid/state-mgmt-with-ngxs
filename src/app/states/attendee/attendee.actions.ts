@@ -20,6 +20,11 @@ export class AddAttendee {
   constructor(public payload: Attendee) { }
 }
 
+export class UpsertAttendee {
+  static readonly type = '[Attendee] UpsertAttendee';
+  constructor(public payload: Attendee) { }
+}
+
 export class FilterAttendees {
   static readonly type = '[Attendee] FilterAttendees';
   constructor(public payload: string) { }

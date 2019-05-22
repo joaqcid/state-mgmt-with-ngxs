@@ -1,7 +1,7 @@
 import { Attendee } from './../../models/attendee';
 import { AttendeeFirestore } from './../../services/attendee.firestore';
 import { State, Action, StateContext, Selector, NgxsOnInit, Actions, ofActionSuccessful } from '@ngxs/store';
-import { SetFormTitle, AddAttendee, SelectAttendee, EditAttendee, DeleteAttendee, ClearSelectedAttendee, FilterAttendees, SetLoading, SetLoaded } from './attendee.actions';
+import { SetFormTitle, AddAttendee, SelectAttendee, EditAttendee, DeleteAttendee, ClearSelectedAttendee, FilterAttendees, SetLoading, SetLoaded, UpsertAttendee } from './attendee.actions';
 import { tap, debounceTime, switchMap } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import * as _ from 'lodash'
@@ -112,8 +112,8 @@ export class AttendeeState implements NgxsOnInit {
     })
   }
 
-  @Action(AddAttendee)
-  async addAttendee({ patchState }: StateContext<AttendeeStateModel>, action: AddAttendee) {
+  @Action(UpsertAttendee)
+  async upsertAttendee({ patchState }: StateContext<AttendeeStateModel>, action: UpsertAttendee) {
     await this.attendeeFS.upsert(action.payload)
   }
 
@@ -130,11 +130,6 @@ export class AttendeeState implements NgxsOnInit {
   @Action(ClearSelectedAttendee)
   clearSelectedAttendee({ patchState }: StateContext<AttendeeStateModel>, action: ClearSelectedAttendee) {
     patchState({ selected: null })
-  }
-
-  @Action(EditAttendee)
-  async editAttendee({ patchState }: StateContext<AttendeeStateModel>, action: EditAttendee) {
-    await this.attendeeFS.upsert(action.payload)
   }
 
   @Action(DeleteAttendee)

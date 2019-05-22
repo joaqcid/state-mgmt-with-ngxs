@@ -5,7 +5,7 @@ import { Select } from '@ngxs/store';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AttendeeFormComponent } from '../attendee-form/attendee-form.component';
-import { DeleteAttendee, SetFormTitle } from './../../../app/states/attendee/attendee.actions';
+import { DeleteAttendee, SetFormTitle, ClearSelectedAttendee } from './../../../app/states/attendee/attendee.actions';
 
 @Component({
   selector: 'app-attendee-detail',
@@ -32,6 +32,6 @@ export class AttendeeDetailComponent implements OnInit {
   }
 
   @Dispatch()
-  delete = (id) => new DeleteAttendee(id)
+  delete = (id) => [new DeleteAttendee(id), new ClearSelectedAttendee()]
 
 }

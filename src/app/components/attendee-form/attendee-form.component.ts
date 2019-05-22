@@ -1,3 +1,4 @@
+import { UpsertAttendee } from './../../states/attendee/attendee.actions';
 import { Attendee } from './../../../app/models/attendee';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AttendeeState } from './../../states/attendee/attendee.state';
@@ -22,6 +23,7 @@ export class AttendeeFormComponent implements OnInit {
     id: new FormControl(''),
     name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
+    message: new FormControl('')
   })
   edit$: Observable<any>;
 
@@ -52,6 +54,6 @@ export class AttendeeFormComponent implements OnInit {
   @Dispatch()
   save = () => {
     this.activeModal.dismiss()
-    return new AddAttendee(this.form.value)
+    return new UpsertAttendee(this.form.value)
   }
 }
