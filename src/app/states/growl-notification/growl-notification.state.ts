@@ -36,24 +36,24 @@ export class GrowlNotificationState {
   }
 
   @Action(GrowlNotificationActions.Error)
-  error(ctx: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Error) {
-    ctx.patchState({
+  error({ patchState }: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Error) {
+    patchState({
       message: action.payload,
       type: 'error'
     });
   }
 
   @Action(GrowlNotificationActions.Success)
-  success(ctx: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Success) {
-    ctx.patchState({
+  success({ patchState }: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Success) {
+    patchState({
       message: action.payload,
       type: 'success'
     });
   }
 
   @Action(GrowlNotificationActions.Dismiss)
-  dismiss(ctx: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Dismiss) {
-    ctx.patchState({
+  dismiss({ patchState }: StateContext<GrowlNotificationStateModel>, action: GrowlNotificationActions.Dismiss) {
+    patchState({
       message: '',
       type: ''
     });

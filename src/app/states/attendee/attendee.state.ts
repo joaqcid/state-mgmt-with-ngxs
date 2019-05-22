@@ -17,7 +17,7 @@ export interface AttendeeStateModel {
 }
 
 @State<AttendeeStateModel>({
-  name: 'Atendee',
+  name: 'atendee',
   defaults: {
     formTitle: '',
     attendees: [],
