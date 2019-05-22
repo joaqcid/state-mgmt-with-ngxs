@@ -17,7 +17,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         store.dispatch(new GrowlNotificationActions.Error(`An error ocurred. ${error.message}`))
 
         // Make sure to rethrow the error so Angular can pick it up
-        //throw error;
+        throw error;
     }
 }
 
