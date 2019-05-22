@@ -23,7 +23,7 @@ export class AttendeeFormComponent implements OnInit {
     id: new FormControl(''),
     name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    message: new FormControl('')
+    bio: new FormControl('')
   })
   edit$: Observable<any>;
 

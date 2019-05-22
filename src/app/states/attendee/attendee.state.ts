@@ -116,7 +116,7 @@ export class AttendeeState implements NgxsOnInit {
   }
 
   @Action(UpsertAttendee)
-  async upsertAttendee(action: UpsertAttendee) {
+  async upsertAttendee({ }: StateContext<AttendeeStateModel>, action: UpsertAttendee) {
     await this.attendeeFS.upsert(action.payload)
   }
 
