@@ -2,8 +2,6 @@ import { Injectable, Provider, APP_INITIALIZER } from '@angular/core';
 import { Actions, Store, ofActionSuccessful } from '@ngxs/store';
 import { RouterNavigation } from '@ngxs/router-plugin';
 import { SetPageHead } from '../states/page-head/page-head.actions';
-// Noop handler for factory function
-export function noop() { return function () { }; };
 
 @Injectable({ providedIn: 'root' })
 export class RouteHandler {
@@ -29,7 +27,7 @@ export class RouteHandler {
 
 export const RouteHandlerProvider: Provider = {
     provide: APP_INITIALIZER,
-    useFactory: noop,
+    useFactory: () => () => { },
     deps: [
         RouteHandler
     ],

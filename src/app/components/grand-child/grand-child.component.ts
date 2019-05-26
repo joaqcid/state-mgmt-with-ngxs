@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { UserState } from './../../states/user/user.state';
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { PageHeadState } from './../../../app/states/page-head/page-head.state';
@@ -16,6 +18,9 @@ export class GrandChildComponent implements OnInit {
 
   @Select(PageHeadState.isPage(PAGE_HEADS.RXJS_SERVICE_I.title)) rxjsServicePage$: Observable<boolean>
   @Select(PageHeadState.isPage(PAGE_HEADS.GENERIC_SERVICE_I.title)) genericServicePage$: Observable<boolean>
+  @Select(PageHeadState.isPage(PAGE_HEADS.NGXS.title)) ngxsPage$: Observable<boolean>
+
+  @Select(UserState.user) user$: Observable<User>
 
   constructor(
     private rxjsService: RxjsService,
@@ -36,7 +41,6 @@ export class GrandChildComponent implements OnInit {
   }
 
   get user() {
-    console.log("GrandChildComponent", "user", this.angularService.user)
     return this.angularService.user
   }
 

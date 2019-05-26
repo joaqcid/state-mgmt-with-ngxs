@@ -32,10 +32,7 @@ export class ClickService extends GenericRxjsService<ClickModel> {
     super({
       title: "Hello world!",
       clickCount: 0,
-      user: {
-        firstName: 'Joaquin',
-        lastName: 'Cid'
-      }
+      user: { firstName: 'Joaquin', lastName: 'Cid' }
     })
   }
 
@@ -49,13 +46,9 @@ export class ClickService extends GenericRxjsService<ClickModel> {
   }
 
   save({ firstName, lastName }: User) {
-
-    this.patch({
-      user: {
-        firstName,
-        lastName
-      }
-    }, "save")
-
+    this.patch(
+      { user: { firstName, lastName } }
+      , "save"
+    )
   }
 }

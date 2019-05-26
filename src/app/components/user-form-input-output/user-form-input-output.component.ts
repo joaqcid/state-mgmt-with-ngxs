@@ -13,8 +13,6 @@ export class UserFormInputOutputComponent implements OnInit {
   @Input() user: User
   @Output() onSubmit: EventEmitter<User> = new EventEmitter<User>();
 
-  user$: Observable<User>;
-
   form: FormGroup = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required)

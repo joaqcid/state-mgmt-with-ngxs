@@ -29,11 +29,9 @@ export class UserFormRxjsServiceComponent implements OnInit {
     this.user$ = this.rxjsService.user$.pipe(
       tap(user => {
         this.form.patchValue(user)
-
         this.form.enable()
       })
     )
-
   }
 
   submit() {

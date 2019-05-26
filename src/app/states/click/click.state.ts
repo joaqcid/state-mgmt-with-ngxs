@@ -31,5 +31,4 @@ export class ClickState {
       title: `Clicked ${newClickCount} times`
     })
   }
-
 }

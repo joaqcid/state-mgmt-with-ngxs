@@ -14,4 +14,8 @@
     <h6>clickServiceUser$</h6>
     <pre>{{clickServiceUser$ | async | json}}</pre>
   </ng-container>
+  <ng-container *ngIf="ngxsPage$ | async; let user">
+    <h6>ngxsPage$</h6>
+    <pre>{{user$ | async | json}}</pre>
+  </ng-container>
 </div>
