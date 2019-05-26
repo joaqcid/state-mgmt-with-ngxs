@@ -14,6 +14,8 @@ export class NavBarComponent {
   @Select(AuthState.loggedIn) loggedIn$;
   @Select(AuthState.loggedOut) loggedOut$;
   @Select(AuthState.email) email$;
+  @Select(AuthState.loaded) authLoaded$;
+  @Select(AuthState.loading) authLoading$;
 
   @Dispatch()
   login = () => new Login()

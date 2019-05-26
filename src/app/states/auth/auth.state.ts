@@ -1,10 +1,11 @@
+import { LoadableStateModel, LoadableState } from '../loadable/loadable';
 import { State, Action, StateContext, Selector, NgxsOnInit } from '@ngxs/store';
-import { Login, Logout, SignInWithPopupGoogleProvider, AuthStateChanged } from './auth.actions';
+import { Login, Logout, AuthStateChanged } from './auth.actions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { tap } from 'rxjs/operators';
 
-export interface AuthStateModel {
+export interface AuthStateModel extends LoadableStateModel {
   loggedIn: boolean;
   email: string;
 }
@@ -13,15 +14,19 @@ export interface AuthStateModel {
   name: 'auth',
   defaults: {
     loggedIn: false,
-    email: ''
+    email: '',
+    loading: true,
+    loaded: false
   }
 })
 export class AuthState implements NgxsOnInit {
 
+  @Selector() static loading(state: LoadableStateModel) { return state.loading }
+  @Selector() static loaded(state: LoadableStateModel) { return state.loaded }
+
   constructor(
     private afAuth: AngularFireAuth
   ) {
-
   }
 
   ngxsOnInit({ dispatch }: StateContext<AuthStateModel>) {
@@ -53,6 +58,8 @@ export class AuthState implements NgxsOnInit {
       patchState({ loggedIn: false, email: '' })
     else
       patchState({ loggedIn: !!action.payload, email: action.payload.email || '' })
+
+    patchState({ loaded: true, loading: false })
   }
 
   @Action(Login)

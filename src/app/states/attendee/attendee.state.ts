@@ -1,3 +1,4 @@
+import { LoadableStateModel, LoadableState } from '../loadable/loadable';
 import { Attendee } from './../../models/attendee';
 import { AttendeeFirestore } from './../../services/attendee.firestore';
 import { State, Action, StateContext, Selector, NgxsOnInit, Actions, ofActionSuccessful } from '@ngxs/store';
@@ -7,13 +8,11 @@ import { combineLatest } from 'rxjs';
 import * as _ from 'lodash'
 import { GrowlNotificationActions } from '../growl-notification/growl-notification.actions';
 
-export interface AttendeeStateModel {
+export interface AttendeeStateModel extends LoadableStateModel {
   formTitle: string;
   attendees: Attendee[];
   selected: Attendee;
   filterBy: string;
-  loading: boolean
-  loaded: boolean
 }
 
 @State<AttendeeStateModel>({
@@ -28,6 +27,9 @@ export interface AttendeeStateModel {
   }
 })
 export class AttendeeState implements NgxsOnInit {
+
+  @Selector() static loading(state: LoadableStateModel) { return state.loading }
+  @Selector() static loaded(state: LoadableStateModel) { return state.loaded }
 
   constructor(
     private attendeeFS: AttendeeFirestore,
@@ -85,11 +87,6 @@ export class AttendeeState implements NgxsOnInit {
   @Selector()
   static selected(state: AttendeeStateModel) {
     return state.selected
-  };
-
-  @Selector()
-  static loading(state: AttendeeStateModel) {
-    return state.loading
   };
 
   @Action(SetFormTitle)
