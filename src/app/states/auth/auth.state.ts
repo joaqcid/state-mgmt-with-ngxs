@@ -1,4 +1,4 @@
-import { LoadableStateModel, LoadableState } from '../loadable/loadable';
+import { LoadableStateModel } from '../loadable/loadable';
 import { State, Action, StateContext, Selector, NgxsOnInit } from '@ngxs/store';
 import { Login, Logout, AuthStateChanged } from './auth.actions';
 import { AngularFireAuth } from '@angular/fire/auth';

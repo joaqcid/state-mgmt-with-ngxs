@@ -3,6 +3,8 @@ import { Actions, Store, ofActionSuccessful } from '@ngxs/store';
 import { RouterNavigation } from '@ngxs/router-plugin';
 import { SetPageHead } from '../states/page-head/page-head.actions';
 
+export function noop() { return () => { } }
+
 @Injectable({ providedIn: 'root' })
 export class RouteHandler {
 
@@ -27,7 +29,7 @@ export class RouteHandler {
 
 export const RouteHandlerProvider: Provider = {
     provide: APP_INITIALIZER,
-    useFactory: () => () => { },
+    useFactory: noop,
     deps: [
         RouteHandler
     ],

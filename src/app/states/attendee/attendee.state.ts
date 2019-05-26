@@ -1,4 +1,4 @@
-import { LoadableStateModel, LoadableState } from '../loadable/loadable';
+import { LoadableStateModel } from '../loadable/loadable';
 import { Attendee } from './../../models/attendee';
 import { AttendeeFirestore } from './../../services/attendee.firestore';
 import { State, Action, StateContext, Selector, NgxsOnInit, Actions, ofActionSuccessful } from '@ngxs/store';
