@@ -5,7 +5,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { tap } from 'rxjs/operators';
 
+export class AuthMeta {
+  // meta selectors outside @State classes
+  // first param is the @State, in this case, is empty, and the AuthState.loaded selector, will be passed in second param
+  @Selector([AuthState.loaded]) static loaded(state: any, loaded: boolean) { debugger; return loaded }
 
+  @Action(AuthStateChanged) aaa(state: StateContext<any>, payload) {
+    debugger
+  }
+}
 
 export interface AuthStateModel extends LoadableStateModel {
   loggedIn: boolean;
