@@ -2,6 +2,7 @@ import { Injectable, Provider, APP_INITIALIZER } from '@angular/core';
 import { Actions, Store, ofActionSuccessful } from '@ngxs/store';
 import { RouterNavigation } from '@ngxs/router-plugin';
 import { SetPageHead } from '../states/page-head/page-head.actions';
+import { asapScheduler } from 'rxjs';
 
 export function noop() { return () => { } }
 
@@ -16,12 +17,15 @@ export class RouteHandler {
             .pipe(ofActionSuccessful(RouterNavigation))
             .subscribe((payload: RouterNavigation) => {
 
-                const { title, description } = payload.routerState.root.firstChild.data
-
-                this.store.dispatch(new SetPageHead({
-                    title,
-                    description
-                }))
+                asapScheduler.schedule(() => {
+                    if (!payload.routerState.root.firstChild)
+                        return
+                    const { title, description } = payload.routerState.root.firstChild.data
+                    this.store.dispatch(new SetPageHead({
+                        title,
+                        description
+                    }))
+                })
 
             });
     }
